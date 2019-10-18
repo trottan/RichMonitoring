@@ -72,8 +72,6 @@ public class RICHmonitor  extends DetectorMonitor{
         dg.addDataSet(RichScaler, 0);
         this.getDataGroup().add(dg,0,0,0);
 
-        setOpaque(true);
-        this.getDetectorCanvas().getCanvas("PMT Window").setBackground(Color.BLACK);
         boarder();
 
         int row = 23;
@@ -170,7 +168,7 @@ public class RICHmonitor  extends DetectorMonitor{
         int[] twoBlock = {391,365,336,310,287,261,238,218,195,175,158,138,121,107,90,76,65,51,40,32,18,13,8}; //blocks that has two pmts instead of 3
         int[] firstTile = {363,336,310,285,261,238,216,195,175,156,138,121,105,90,76,63,51,40,30,21,13,6}; //start of each block
 
-        double x0 = 5, x = x0, y = 207.5, x1 =0, y1 =0;
+        double x0 =5, x = x0, y = 207.5, x1 =0, y1 =0;
         int j =0;
 
         DataLine dl = new DataLine(x,y,x1,y);
@@ -183,7 +181,7 @@ public class RICHmonitor  extends DetectorMonitor{
               j++;
           }
           if(pmt == twoBlock[i]){
-            x1= (x+9*2)-.5;
+            x1= (x+8*2)+1;
             y1= y -9;
             dl =  new DataLine(x,y,x1,y);
             this.getDetectorCanvas().getCanvas("PMT Window").draw(dl);
@@ -200,9 +198,9 @@ public class RICHmonitor  extends DetectorMonitor{
               i++;
             pmt-=2;
 
-            x = x1;
+            x = x1 +1;
           } else {
-            x1= (x+9*3);
+            x1= (x+8*3)+2;
             y1= y -9;
             dl =  new DataLine(x,y,x1,y);
             this.getDetectorCanvas().getCanvas("PMT Window").draw(dl);
@@ -216,7 +214,7 @@ public class RICHmonitor  extends DetectorMonitor{
            dl =  new DataLine(x1,y,x1,y1);
            this.getDetectorCanvas().getCanvas("PMT Window").draw(dl);
 
-            x = x1;
+            x = x1 +1;
 
             pmt-=3;
           }
